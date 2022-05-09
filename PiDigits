@@ -1,0 +1,26 @@
+# This might not be 100% accurate since python is rounding up the last digit
+
+# Import Proper Packages
+import decimal
+from math import sqrt
+
+# Make decimal count
+digit = decimal.getcontext().prec = 101
+
+# Create variables for Chudnovsky Method
+# Use decimal.Decimal to not make the float to big for output
+C = 426880 * decimal.Decimal(10005).sqrt()
+Kq = 6.
+Mq = 1.
+Xq = 1
+Lq = 13591409
+L = 13591409
+
+# Loop 100 times for 100 digits
+for i in range(1, digit):
+    Mq = Mq * (Kq ** 3 - 16 * Kq) / ((i + 1) ** 3)
+    Lq += 545140134
+    Xq *= -262537412640768000
+    L += decimal.Decimal(Mq * Lq) / Xq
+
+print(C / S)
